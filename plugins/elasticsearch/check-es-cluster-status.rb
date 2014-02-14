@@ -47,7 +47,7 @@ class ESClusterStatus < Sensu::Plugin::Check::CLI
 
   def is_master
     state = get_es_resource('/_cluster/state?filter_routing_table=true&filter_metadata=true&filter_indices=true')
-    local = get_es_resource('/_cluster/nodes/_local')
+    local = get_es_resource('/_nodes/_local')
     local['nodes'].keys.first == state['master_node']
   end
 
